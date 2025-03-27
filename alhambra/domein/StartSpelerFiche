@@ -1,1 +1,38 @@
+package domein;
 
+import java.util.List;
+
+import dtos.SpelerDTO;
+
+public class StartSpelerFiche extends Fiche {
+	
+//    private SpelerDTO startSpeler;
+//    private static final int STARTSPELER_FICHE_SCORE = 0;
+//    
+//
+////    public StartSpelerFiche(List<Speler> spelers) {
+////    	
+////		Volgende code beslist de eerste speler door de size te nemen van alle spelers en op basis hiervan een waarde te geven die overeenkomt met de index.
+////  	this.score = STARTSPELER_FICHE_SCORE;
+////      this.startSpeler = spelers.get(sr.nextInt(spelers.size())); 
+////    	
+////    	this(spelers.get(sr.nextInt(spelers.size())));  // --> deze code is normaal hetzelfde als erboven in commentaar maar roept de ctor eronder op om dezelfde code te vermijden
+////		}
+//
+//    // ctor voor wanneer iemand de startspelerfiche heeft gekozen
+//    public StartSpelerFiche(SpelerDTO nieuweStartSpeler) {
+//        this.score = STARTSPELER_FICHE_SCORE;
+//        this.startSpeler = nieuweStartSpeler;
+//	}
+//    
+//
+//    
+//    public SpelerDTO getStartSpeler() {
+//        return startSpeler;
+//    }
+//
+//    public void setStartSpeler(SpelerDTO startSpeler) {
+//	this.startSpeler = startSpeler;
+//    }
+}
+//// bros ik ga eerlijk zijn idk wa ik aan het doen ben de helft van de tijd   
