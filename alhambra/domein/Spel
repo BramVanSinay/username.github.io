@@ -1,1 +1,100 @@
+package domein;
 
+import java.security.SecureRandom;
+import java.util.ArrayList;
+import java.util.List;
+
+import dtos.SpelerDTO;
+import utils.SpelerKleur;
+
+public class Spel {
+	// associaties
+	private List<SpelerDTO> gekozenSpelers;
+	private List<SpelerKleur> spelerKleuren;
+	private List<Fiche> fiches;
+	private Spelbord spelbord;
+	// attributen
+	private SpelerDTO startSpeler;
+	private SecureRandom random;
+	private int vorigeWrop;
+	private int aantalZetstenen;
+
+
+	// constanten
+	private static final int AANTAL_GEBOUWSTENEN = 6;
+	private static final int MIN_AANTAL_SPELERS = 3;
+	private static final int MAX_AANTAL_SPELERS = 6;
+
+	// constructor
+	public Spel(int aantalZetstenen) {
+		gekozenSpelers = new ArrayList<>();
+		spelerKleuren = new ArrayList<>();
+		random = new SecureRandom();
+		setAantalZetstenen(aantalZetstenen);
+	}
+	// getters en setters
+
+	private void setAantalZetstenen(int aantalZetstenen) {
+		int aantalSpelers = gekozenSpelers.size();
+
+		switch (aantalSpelers) {
+		case 3 -> aantalZetstenen = 5;
+		case 4 -> aantalZetstenen = 4;
+		case 5, 6 -> aantalZetstenen = 3;
+		default -> this.aantalZetstenen = aantalZetstenen;
+		}
+	}
+
+	public int getAantalZetstenen() {
+		return aantalZetstenen;
+	}
+
+	public int getAantalGebouwstenen() {
+		return AANTAL_GEBOUWSTENEN;
+	}
+
+	// overige methodes
+	public void voegSpelerToe(String gebruikersnaam, SpelerKleur spelerKleur, int geboortejaar, int score) {
+		gekozenSpelers.add(new SpelerDTO(gebruikersnaam, geboortejaar, score));
+		spelerKleuren.add(spelerKleur);
+		setAantalZetstenen(score);
+
+	}
+
+	public List<SpelerDTO> geefGekozenSpelers(String gebruikersnaam, SpelerKleur spelerKleur, int geboortejaar,
+			int score) {
+		return gekozenSpelers;
+	}
+
+	public List<SpelerKleur> geefGekozenKleurSpeler() {
+		return spelerKleuren;
+	}
+	public List<Fiche> geefLijstFiche(){
+		return fiches;
+	}
+
+	public void startSpel() {
+		if (gekozenSpelers.size() < 3 || gekozenSpelers.size() > 6)
+			throw new IllegalStateException(String.format("Het spel moet tussen de %d en %d spelers bevatten!!",
+					MIN_AANTAL_SPELERS, MAX_AANTAL_SPELERS));
+	}
+
+	// Kiest een random startSpeler bij het begin van een spel
+	public SpelerDTO StartSpeler() {
+		int index = random.nextInt(gekozenSpelers.size());
+		startSpeler = gekozenSpelers.get(index);
+		return startSpeler;
+
+	}
+
+	private void maakLijstFiches() {
+
+		fiches = new ArrayList<>();
+		for (int i = 0; i < 16; i++) {
+			fiches.add(new Fiche());
+		}
+	}
+
+	// public void bepaalStartSpeler()
+
+}
