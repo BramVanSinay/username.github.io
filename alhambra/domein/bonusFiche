@@ -1,1 +1,21 @@
+package domein;
+
+import java.security.SecureRandom;
+
+public class BonusFiche extends Fiche{
+	private int score;
+	private static final SecureRandom sr = new SecureRandom();
+
+	public BonusFiche() {
+		setScore();
+	}
+	
+	public int getScore() {
+		return score;
+	}
+	
+	private void setScore() {
+		score = sr.nextInt(3) + 1;
+	}
+}
 
