@@ -1,1 +1,48 @@
+package domein;
 
+import java.util.ArrayList;
+import java.util.List;
+
+public class Spelbord {
+
+	private FicheBord gebiedBonus; //
+	private List<GebiedDobbelResultaat> gebiedDobbelResultaten;
+	private List<GebouwGebied> gebiedGebouwPunten;
+
+	public Spelbord() {
+		this.gebiedBonus = new ArrayList<>();
+		this.gebiedDobbelResultaten = new ArrayList<>();
+		this.gebiedGebouwPunten = new ArrayList<>();
+	}
+	
+	public void voegToeBonusFiches(List<FicheBord> gebiedBonus) {
+        this.gebiedBonus.addAll(gebiedBonus);
+    }
+	
+	public void voegToeSpelerResultaat(List<GebiedDobbelResultaat> gebiedDobbelResultaten) {
+        this.gebiedDobbelResultaten.addAll(gebiedDobbelResultaten);
+    }
+	
+	public void voegToeSpelerGebouw(List<GebouwGebied> gebiedGebouwPunten) {
+        this.gebiedGebouwPunten.addAll(gebiedGebouwPunten);
+    }
+	
+	
+	//getters & setters
+	 public List<FicheBord> getGebiedBonus() {
+		 return gebiedBonus;
+	}
+	 
+	public List<GebiedDobbelResultaat> getGebiedDobbelResultaten() {
+		return gebiedDobbelResultaten;
+	}
+	
+	public List<GebouwGebied> getGebiedGebouwPunten() {
+		return gebiedGebouwPunten;
+	}
+	
+	// List aparte klasse maken
+	// 2 dimensionale array
+	// private int [][]
+
+}
