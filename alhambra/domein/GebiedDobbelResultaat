@@ -1,1 +1,34 @@
+package domein;
 
+public class GebiedDobbelResultaat {
+    private final int worp;    // misschien naam veranderen naar dobbelsteenworp???
+    private final String type; // Voor specifieren dat we een dobbbelsteen bijhouden. Is dit zelf nodig idk man.
+
+    public GebiedDobbelResultaat(int worp, String type) {
+    	 if (worp < 1 || worp > 6) {
+             throw new IllegalArgumentException("Ongeldige worp." + worp);
+         }
+         if (type == null || type.isBlank()) {
+             throw new IllegalArgumentException("Type mag niet leeg zijn.");
+         }
+         this.worp = worp;
+         this.type = type;
+         
+         //hebben we de exceptions nodig??
+    }
+    
+    //getters
+    public int getWorp() {
+        return worp;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Resultaat: %d (%s)", worp, type);
+    }
+    
+}
